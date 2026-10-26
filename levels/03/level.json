@@ -1,0 +1,258 @@
+{
+  "recallStartX": 26,
+  "platforms": [
+    {
+      "y": 0.48,
+      "x": 5.2,
+      "w": 2.1,
+      "id": "catTreeLow",
+      "h": 0.16
+    },
+    {
+      "y": 0.95,
+      "x": 6.5,
+      "w": 2,
+      "id": "catTreeHigh",
+      "h": 0.16
+    },
+    {
+      "y": 0,
+      "x": 11.2,
+      "w": 3.2,
+      "id": "waterBridge",
+      "requiresActive": "bridgeSwitch",
+      "h": 0.12
+    },
+    {
+      "y": 0.99,
+      "x": 21.1,
+      "w": 1.5,
+      "id": "rampControl",
+      "h": 0.16
+    },
+    {
+      "ramp": true,
+      "y": 0,
+      "x": 23.3,
+      "y1": 0.4,
+      "requiresActive": "rampSwitch",
+      "id": "metalRamp",
+      "h": 0.1,
+      "w": 2.1
+    },
+    {
+      "ramp": true,
+      "y": 0,
+      "x": 20.2,
+      "y1": 0.4,
+      "requiresActive": "bathStep",
+      "id": "bathStepDeck",
+      "h": 0.12,
+      "w": 1.4
+    }
+  ],
+  "zones": [
+    {
+      "kind": "water",
+      "x0": 11.6,
+      "x1": 14,
+      "id": "pool",
+      "outlet": 14.3
+    },
+    {
+      "kind": "carpet",
+      "id": "carpet",
+      "x1": 22.2,
+      "x0": 20
+    },
+    {
+      "kind": "slip",
+      "x0": 22.3,
+      "x1": 23.8,
+      "id": "wetSlip",
+      "catchX": 24.1
+    }
+  ],
+  "version": "free-v2-refined-20261008",
+  "hints": [
+    "煤球空手跳猫架，拨拉杆放下跨水桥。",
+    "汤圆把整球放水盆，毡球重4压开柜门；奶盖先过并插内侧门撑。",
+    "取回同一毡球经过毛毯带电，放到金属开关旁；三猫撤离。"
+  ],
+  "hintTasks": [
+    {
+      "requires": [
+        "bridgeSwitch"
+      ],
+      "hints": [
+        "观察水池左侧猫架。",
+        "拉杆放桥，过水不必落水。",
+        "煤球放球、跳上猫架，在拉杆旁按E。"
+      ]
+    },
+    {
+      "requires": [
+        "insideLatch"
+      ],
+      "hints": [
+        "观察重板和门后的窄缝。",
+        "同一球入水变重4，开门后先留内侧门撑。",
+        "汤圆把毡球放重板；空手奶盖穿门，按E插门撑后再取球。"
+      ]
+    },
+    {
+      "requires": [
+        "rampSwitch"
+      ],
+      "hints": [
+        "毛毯旁有浴室踏板和高处拉杆。",
+        "重猫能把踏板移到送球处，也可让煤球操作原来的高拉杆。",
+        "内侧门撑固定后，让重3以上的猫在移动踏板旁按E；同一个毡球先过毛毯，再沿短坡送到金属柱。"
+      ]
+    },
+    {
+      "hints": [
+        "观察有电纹的金属柱。",
+        "毛毯让毡球带电，湿滑地会延长滚球距离。",
+        "汤圆取回同一毡球，经过毛毯，再沿短坡推到金属柱旁。"
+      ],
+      "skipIf": "exitLatch",
+      "requires": [
+        "metalSwitch"
+      ]
+    }
+  ],
+  "room": "浴室",
+  "secret": {
+    "label": "洗手台散线",
+    "id": "secret03",
+    "x": 8.8,
+    "y": 3.5
+  },
+  "machines": [
+    {
+      "kind": "switch",
+      "label": "猫架拉杆·放桥",
+      "x": 7.7,
+      "ability": "climb",
+      "id": "bridgeSwitch",
+      "y": 1.11
+    },
+    {
+      "kind": "plate",
+      "label": "重压板·毡球重4",
+      "x": 17.1,
+      "w": 1.6,
+      "ballWell": true,
+      "id": "heavyPlate",
+      "releaseDelay": 0.3,
+      "need": 4
+    },
+    {
+      "kind": "metal",
+      "label": "金属窝门开关",
+      "x": 25.4,
+      "id": "metalSwitch",
+      "y": 0.5
+    },
+    {
+      "kind": "door",
+      "label": "浴室窝门",
+      "x": 28.1,
+      "w": 0.55,
+      "latch": "exitLatch",
+      "id": "exitDoor",
+      "requires": [
+        "bridgeSwitch",
+        "insideLatch",
+        "rampSwitch",
+        "metalSwitch"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "door",
+      "label": "重板柜门",
+      "x": 18.7,
+      "w": 0.45,
+      "latch": "insideLatch",
+      "id": "weightDoor",
+      "requires": [
+        "heavyPlate"
+      ],
+      "h": 3.5
+    },
+    {
+      "kind": "switch",
+      "y": 0,
+      "x": 20,
+      "ability": "crawl",
+      "id": "insideLatch",
+      "label": "内侧门撑·永久"
+    },
+    {
+      "kind": "releaseMetal",
+      "id": "releaseMetal",
+      "x": 24.1,
+      "label": "解除吸附"
+    },
+    {
+      "kind": "switch",
+      "y": 1.15,
+      "x": 22,
+      "ability": "climb",
+      "id": "rampSwitch",
+      "label": "放下送球短坡"
+    },
+    {
+      "kind": "receiver",
+      "y": 0.35,
+      "x": 24.6,
+      "w": 0.5,
+      "id": "metalCatch",
+      "label": "湿滑地接球槽"
+    },
+    {
+      "kind": "switch",
+      "id": "exitLatch",
+      "x": 29.25,
+      "label": "窝门门撑"
+    },
+    {
+      "kind": "exp_step",
+      "label": "移动浴室踏板",
+      "x": 21.8,
+      "id": "bathStep",
+      "requires": [
+        "insideLatch"
+      ],
+      "pushMin": 3
+    },
+    {
+      "kind": "exp_dry",
+      "label": "擦干原球",
+      "x": 25.7,
+      "id": "dryTowel",
+      "requires": [
+        "exitLatch"
+      ]
+    }
+  ],
+  "finalHints": [
+    "窝门已经开着，看看门后的门撑。",
+    "先撑住窝门，就能解除磁吸、取回原来的线球。",
+    "一只猫过门后按E撑住窝门；其他猫可解除吸附取球，再一起回窝。"
+  ],
+  "sub": "同一颗球先压门，再吸住金属开关。",
+  "name": "湿了更沉",
+  "spawnX": 1.4,
+  "homeX": 30.4,
+  "day": 3,
+  "roomWidth": 34
+}

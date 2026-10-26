@@ -1,0 +1,166 @@
+{
+  "recallStartX": 15.9,
+  "sub": "搭背开柜、钻洞放行，再一起把球送回窝。",
+  "version": "free-v2-refined-20261008",
+  "hints": [
+    "汤圆在低柜左侧站稳，煤球空手跳到汤圆背上，再跳上高柜。",
+    "煤球按高处开关；奶盖空手钻柜底，开侧门锁扣。",
+    "汤圆把整球放进出口板浅槽：球重3替压，最后一猫也能离开。"
+  ],
+  "hintTasks": [
+    {
+      "requires": [
+        "climbSwitch"
+      ],
+      "hints": [
+        "先观察出生区的低柜。",
+        "队友的背能提高起跳支撑面。",
+        "汤圆站柜左侧，煤球放球后跳上背，再跳柜顶按E。"
+      ]
+    },
+    {
+      "requires": [
+        "crawlSwitch"
+      ],
+      "hints": [
+        "柜底还有一条窄路。",
+        "小猫空手能穿过，侧门会保持开启。",
+        "奶盖先放球，钻到另一侧按E开门闩。"
+      ]
+    },
+    {
+      "hints": [
+        "看看地板、窝门和门后的支架。",
+        "压住地板能开门；走到门后还可以把门撑住。",
+        "可以留一个整球压板；也可以让汤圆站板，队友先过门按E撑门，再一起回窝。"
+      ],
+      "skipIf": "exitLatch",
+      "requires": [
+        "exitPlate"
+      ]
+    }
+  ],
+  "room": "客厅",
+  "secret": {
+    "label": "隐藏散线",
+    "id": "secret01",
+    "x": 3.2,
+    "y": 3.1
+  },
+  "machines": [
+    {
+      "kind": "switch",
+      "y": 2.6,
+      "x": 7.8,
+      "ability": "climb",
+      "id": "climbSwitch",
+      "label": "煤球·高处开关"
+    },
+    {
+      "kind": "switch",
+      "label": "奶盖·窄缝开关",
+      "x": 14.8,
+      "ability": "crawl",
+      "id": "crawlSwitch"
+    },
+    {
+      "kind": "plate",
+      "label": "出口压板·需3",
+      "x": 18,
+      "w": 1.5,
+      "ballWell": true,
+      "id": "exitPlate",
+      "releaseDelay": 0.3,
+      "need": 3
+    },
+    {
+      "kind": "door",
+      "label": "出口门",
+      "x": 20.1,
+      "w": 0.55,
+      "latch": "exitLatch",
+      "id": "exitDoor",
+      "requires": [
+        "climbSwitch",
+        "crawlSwitch",
+        "exitPlate"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "door",
+      "label": "高柜按钮门",
+      "x": 10.8,
+      "w": 0.4,
+      "id": "cabinetDoor",
+      "requires": [
+        "climbSwitch"
+      ],
+      "h": 3.2
+    },
+    {
+      "kind": "receiver",
+      "label": "浅槽·球可取回",
+      "x": 19.6,
+      "w": 0.35,
+      "id": "exitCatch"
+    },
+    {
+      "kind": "switch",
+      "label": "窝门门撑",
+      "x": 21.8,
+      "id": "exitLatch",
+      "requires": [
+        "climbSwitch",
+        "crawlSwitch"
+      ]
+    }
+  ],
+  "platforms": [
+    {
+      "y": 2.42,
+      "x": 5.8,
+      "w": 4.1,
+      "id": "cabinet",
+      "h": 0.18
+    },
+    {
+      "y": 2.42,
+      "x": 2.1,
+      "w": 2.1,
+      "id": "secretShelf",
+      "h": 0.18
+    },
+    {
+      "ramp": true,
+      "y": 2.6,
+      "x": 8.8,
+      "y1": 0,
+      "requiresActive": "climbSwitch",
+      "id": "cabinetSlide",
+      "h": 0.1,
+      "w": 2
+    }
+  ],
+  "walls": [
+    {
+      "y": 0.66,
+      "x": 13,
+      "ability": "crawl",
+      "id": "catGap",
+      "requiresActive": "crawlSwitch",
+      "h": 3.3
+    }
+  ],
+  "name": "一起开工",
+  "spawnX": 1.4,
+  "homeX": 23,
+  "day": 1,
+  "roomWidth": 27
+}

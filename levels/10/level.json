@@ -1,0 +1,523 @@
+{
+  "room": "全屋",
+  "secret": {
+    "y": 1.05,
+    "x": 30.6,
+    "id": "secret10",
+    "requires": [
+      "vacuumOff"
+    ],
+    "label": "吸尘器旁散线"
+  },
+  "version": "free-v2-finale-20261008",
+  "finalHints": [
+    "宽路已经保持，检查还未进窝的猫。",
+    "装过的绳与毡球仍计入回收，先确保材料没有永久损失。",
+    "取回原始诱饵，送三猫回窝；结局按正篇最新最好成绩总量更新。"
+  ],
+  "walls": [
+    {
+      "y": 0.66,
+      "x": 9.8,
+      "ability": "crawl",
+      "id": "aCrawlLatchGap",
+      "requiresActive": "aCrawlLatch",
+      "h": 3
+    },
+    {
+      "y": 0.66,
+      "x": 26.1,
+      "ability": "crawl",
+      "id": "bBraceGap",
+      "requiresActive": "bInnerBrace",
+      "h": 3
+    },
+    {
+      "y": 0.66,
+      "x": 31.4,
+      "ability": "crawl",
+      "id": "cDustbinGap",
+      "requiresActive": "dustbinOpen",
+      "h": 3
+    },
+    {
+      "y": 0.66,
+      "x": 34.5,
+      "ability": "crawl",
+      "id": "dogSlowGap",
+      "requiresActive": "dogSlowSide",
+      "h": 3
+    }
+  ],
+  "name": "最后一夜",
+  "spawnX": 1.4,
+  "day": 10,
+  "roomWidth": 39,
+  "checkpoints": [
+    "checkpointA",
+    "checkpointB"
+  ],
+  "homeY": 0,
+  "recallStartX": 35.8,
+  "machines": [
+    {
+      "kind": "finale_plan",
+      "id": "planMap",
+      "x": 2.7,
+      "label": "三段简图"
+    },
+    {
+      "kind": "cutStation",
+      "id": "cut",
+      "x": 4,
+      "label": "A区剪刀台"
+    },
+    {
+      "kind": "plate",
+      "label": "轻板A·半球槽",
+      "ballWell": true,
+      "id": "plateA",
+      "x": 6,
+      "w": 1.1,
+      "need": 1,
+      "releaseDelay": 0.35,
+      "maxDiameter": 0.3
+    },
+    {
+      "kind": "plate",
+      "label": "轻板B·半球槽",
+      "ballWell": true,
+      "id": "plateB",
+      "x": 7.6,
+      "w": 0.9,
+      "need": 1,
+      "releaseDelay": 0.35,
+      "maxDiameter": 0.3
+    },
+    {
+      "kind": "switch",
+      "y": 2.6,
+      "x": 7.2,
+      "ability": "climb",
+      "id": "aHighLatch",
+      "label": "煤球·高处锁扣"
+    },
+    {
+      "kind": "switch",
+      "label": "奶盖·侧缝门闩",
+      "x": 10.4,
+      "ability": "crawl",
+      "id": "aCrawlLatch"
+    },
+    {
+      "kind": "finale_timed_switch",
+      "label": "短廊计时开关",
+      "x": 11.2,
+      "target": "timedGate",
+      "id": "timedSwitch",
+      "duration": 7.5
+    },
+    {
+      "kind": "finale_timed_gate",
+      "id": "timedGate",
+      "x": 12.4,
+      "label": "灯条计时门"
+    },
+    {
+      "kind": "door",
+      "label": "A区安全门",
+      "x": 13.1,
+      "w": 0.55,
+      "id": "aDoor",
+      "requires": [
+        "plateA",
+        "plateB",
+        "aHighLatch",
+        "aCrawlLatch",
+        "timedGate"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "receiver",
+      "label": "A区门撑·保持宽路",
+      "x": 13.1,
+      "w": 0.2,
+      "id": "aExitLatch"
+    },
+    {
+      "kind": "checkpoint",
+      "id": "checkpointA",
+      "x": 13.8,
+      "label": "安全点A"
+    },
+    {
+      "kind": "finale_timed_switch",
+      "label": "短廊返程开关",
+      "x": 13.4,
+      "target": "timedGate",
+      "id": "timedReturn",
+      "duration": 7.5
+    },
+    {
+      "kind": "finale_lamp",
+      "y": 1.35,
+      "x": 15.1,
+      "ability": "climb",
+      "id": "lightHigh",
+      "label": "第一盏应急灯"
+    },
+    {
+      "kind": "finale_towel",
+      "id": "towelShade",
+      "x": 17.2,
+      "label": "遮灯毛巾"
+    },
+    {
+      "kind": "finale_lamp",
+      "label": "拉开毛巾并点亮低灯",
+      "x": 18.4,
+      "ability": "crawl",
+      "id": "lightLow"
+    },
+    {
+      "kind": "weaveStation",
+      "id": "loom",
+      "x": 17.3,
+      "label": "B区织线机"
+    },
+    {
+      "kind": "receiver",
+      "label": "织线机材料盘",
+      "x": 16.9,
+      "w": 1.1,
+      "id": "loomTray"
+    },
+    {
+      "kind": "ropeBridge",
+      "y": 1.08,
+      "x": 20.4,
+      "w": 2,
+      "id": "ropeBridge",
+      "label": "滑轮固定绳"
+    },
+    {
+      "kind": "finale_pulley",
+      "y": 1.08,
+      "x": 21.7,
+      "label": "手摇滑轮·送球入水盆",
+      "id": "finalePulley",
+      "targetX": 23.3,
+      "requires": [
+        "ropeBridge",
+        "lightHigh",
+        "lightLow"
+      ]
+    },
+    {
+      "kind": "finale_basin",
+      "id": "waterBasin",
+      "x": 23.3,
+      "label": "水盆出料坡"
+    },
+    {
+      "kind": "plate",
+      "label": "重板·需毡球4",
+      "x": 24.7,
+      "w": 1.5,
+      "ballWell": true,
+      "id": "heavyPlate",
+      "releaseDelay": 0.35,
+      "need": 4
+    },
+    {
+      "kind": "finale_latch",
+      "label": "内侧门撑",
+      "x": 26,
+      "ability": "crawl",
+      "id": "bInnerBrace",
+      "requires": [
+        "heavyPlate"
+      ]
+    },
+    {
+      "kind": "door",
+      "label": "B区宽路门",
+      "x": 26.8,
+      "w": 0.55,
+      "id": "bDoor",
+      "requires": [
+        "bInnerBrace"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "unhook",
+      "y": 0.9,
+      "x": 19.8,
+      "id": "unhook",
+      "label": "解挂绳·保留材料"
+    },
+    {
+      "kind": "checkpoint",
+      "id": "checkpointB",
+      "x": 27.6,
+      "label": "安全点B"
+    },
+    {
+      "kind": "finale_latch",
+      "y": 1.2,
+      "x": 30,
+      "ability": "climb",
+      "id": "vacuumOff",
+      "label": "关闭吸尘器"
+    },
+    {
+      "kind": "finale_thief",
+      "id": "finaleThief",
+      "x": 28.9,
+      "label": "偷球老鼠 · 喵叫驱离"
+    },
+    {
+      "kind": "finale_dustbin",
+      "label": "奶盖·打开尘盒",
+      "x": 31.8,
+      "ability": "crawl",
+      "id": "dustbinOpen"
+    },
+    {
+      "kind": "finale_dog_gate",
+      "id": "dogGate",
+      "x": 33,
+      "label": "狗门诱饵槽"
+    },
+    {
+      "kind": "finale_latch",
+      "y": 1.15,
+      "x": 34,
+      "ability": "crawl",
+      "id": "dogSlowSide",
+      "label": "慢路线侧门"
+    },
+    {
+      "kind": "finale_latch",
+      "label": "安全隔板",
+      "x": 35.5,
+      "id": "finalDivider",
+      "requiresAny": [
+        "dogGate",
+        "dogSlowSide"
+      ]
+    },
+    {
+      "kind": "door",
+      "label": "最后窝门",
+      "x": 36.3,
+      "w": 0.55,
+      "id": "exitDoor",
+      "requires": [
+        "finalDivider"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3,
+      "label": "备用线"
+    },
+    {
+      "kind": "tool",
+      "label": "免费假球",
+      "x": 32.2,
+      "tool": "假球",
+      "id": "toolDecoy"
+    },
+    {
+      "kind": "finale_bait_return",
+      "id": "baitReturn",
+      "x": 35.1,
+      "label": "取回原始诱饵"
+    },
+    {
+      "kind": "finale_material_relay",
+      "label": "材料滑道·两半送到织线机",
+      "x": 14,
+      "id": "materialRelay",
+      "requires": [
+        "aExitLatch"
+      ]
+    },
+    {
+      "kind": "exp_chute",
+      "label": "整球接力送到滑轮",
+      "requires": [
+        "aExitLatch"
+      ],
+      "id": "fullRelay",
+      "sourceX": 0.8,
+      "sourceY": 0,
+      "sourceRange": 3,
+      "x": 14.5,
+      "targetY": 1.08,
+      "targetX": 20.9,
+      "acceptKind": "full"
+    },
+    {
+      "kind": "exp_recover",
+      "y": 0,
+      "x": 18.2,
+      "id": "localTray",
+      "label": "附近散球归盘",
+      "station": "loom"
+    }
+  ],
+  "finale": true,
+  "hintTasks": [
+    {
+      "requires": [
+        "aExitLatch"
+      ],
+      "hints": [
+        "先看A区简图与两块小口压板。",
+        "两半球压板，高处锁扣和侧缝门闩一起留住宽路。",
+        "剪一球分压A/B槽；煤球踩汤圆背开高锁，奶盖开侧门。宽路固定后，在安全点旁按材料滑道，把两半一起送到织线机，不必逐个往返。"
+      ]
+    },
+    {
+      "requires": [
+        "lightHigh"
+      ],
+      "hints": [
+        "B区先点亮猫架上的应急灯。",
+        "空手煤球能从低架起跳到第一盏灯。",
+        "煤球放球，在B区灯架左侧跳上去，灯旁按E。亮区会保留。"
+      ]
+    },
+    {
+      "requires": [
+        "lightLow"
+      ],
+      "hints": [
+        "低处还有一盏被毛巾遮住的灯。",
+        "奶盖空手走低路；先移毛巾再点灯。",
+        "空手奶盖到低灯旁按E，会一起拉开毛巾并点灯；也能先单独移开毛巾。"
+      ]
+    },
+    {
+      "requires": [
+        "bInnerBrace"
+      ],
+      "hints": [
+        "B区需要运输连接和重4球。",
+        "两半织绳固定滑轮；一个整球入水变毡球压重板。",
+        "用滑道把两半送来织绳；A区旁还有整球接力口，可把起点散球送到滑轮。汤圆送毡球上重板，奶盖撑门。"
+      ]
+    },
+    {
+      "requires": [
+        "vacuumOff"
+      ],
+      "hints": [
+        "C区先看吸口旁的纸屑预告。",
+        "煤球空手上高路关吸力，奶盖开尘盒可回收原球。",
+        "保存安全点B后，煤球空手跳高台按E关吸尘器，再取旁边唯一散线。Q能驱离偷球鼠。"
+      ]
+    },
+    {
+      "requires": [
+        "finalDivider"
+      ],
+      "hints": [
+        "最后狗门有三种通过方式。",
+        "整球或免费假球作诱饵；也可让奶盖沿高侧路开门。",
+        "选诱饵槽或侧路，先开门再锁安全隔板；原球诱饵可在内侧取回，最后三猫进窝。"
+      ]
+    }
+  ],
+  "hints": [
+    "A区先看简图：一球剪两半，分别压住两个轻板，再用高处锁扣和侧缝门闩开短廊。",
+    "B区点两盏应急灯，把两半织成绳，固定滑轮，送一个整球进水盆变成毡球压重板。",
+    "C区先观察吸尘器预告；尘盒可取回球，最后可用整球/假球诱饵，或走高路和侧门慢路线。"
+  ],
+  "zones": [
+    {
+      "kind": "finale_water_basin",
+      "x0": 22.8,
+      "x1": 24.1,
+      "id": "basin",
+      "outX": 24.25
+    },
+    {
+      "kind": "finale_vacuum",
+      "x0": 29.6,
+      "x1": 31.1,
+      "dustbinX": 31.8,
+      "id": "vacuum"
+    },
+    {
+      "kind": "finale_safe_slide",
+      "id": "safeSlide",
+      "x1": 31.3,
+      "x0": 28.8
+    }
+  ],
+  "homeX": 36.6,
+  "sub": "分工开路，把同一份材料接力送到下一段。",
+  "platforms": [
+    {
+      "y": 2.44,
+      "x": 6.7,
+      "w": 2.5,
+      "id": "aHighShelf",
+      "h": 0.16
+    },
+    {
+      "y": 1.22,
+      "x": 14.4,
+      "w": 2.4,
+      "id": "bLampShelf",
+      "h": 0.16
+    },
+    {
+      "ramp": true,
+      "y": 0,
+      "x": 18,
+      "y1": 0.82,
+      "requiresActive": "lightLow",
+      "id": "bLowLitRamp",
+      "h": 0.12,
+      "w": 2
+    },
+    {
+      "y": 0.92,
+      "x": 20.3,
+      "w": 3,
+      "id": "pulleyDeck",
+      "requiresActive": "lightLow",
+      "h": 0.16
+    },
+    {
+      "y": 1.05,
+      "x": 29,
+      "w": 2.8,
+      "id": "vacuumHighRoad",
+      "h": 0.16
+    },
+    {
+      "y": 1.02,
+      "x": 32.6,
+      "w": 2.4,
+      "id": "slowDogRoad",
+      "requiresActive": "vacuumOff",
+      "h": 0.16
+    },
+    {
+      "y": 0.33,
+      "x": 32,
+      "w": 1.1,
+      "id": "dogStep",
+      "h": 0.12
+    }
+  ]
+}

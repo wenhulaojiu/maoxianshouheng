@@ -1,0 +1,241 @@
+{
+  "recallStartX": 22.5,
+  "platforms": [
+    {
+      "y": 1.22,
+      "x": 7.2,
+      "w": 3,
+      "id": "airShelf",
+      "h": 0.18
+    },
+    {
+      "y": 1.17,
+      "x": 10.9,
+      "w": 2.3,
+      "id": "controlShelf",
+      "h": 0.18
+    },
+    {
+      "y": 1.22,
+      "x": 8.3,
+      "w": 4.6,
+      "id": "dryingBridge",
+      "requiresActive": "airLatch",
+      "h": 0.18
+    },
+    {
+      "ramp": true,
+      "y": 0,
+      "x": 21.4,
+      "y1": 0.65,
+      "requiresActive": "sailAnchor",
+      "id": "sailWalkway",
+      "h": 0.12,
+      "w": 3.5
+    },
+    {
+      "y": 0,
+      "x": 16.1,
+      "w": 2.2,
+      "id": "sailDeck",
+      "movingMachine": "sailLift",
+      "h": 0.14
+    }
+  ],
+  "zones": [
+    {
+      "kind": "wind",
+      "id": "wind",
+      "x1": 10.2,
+      "x0": 4.4
+    },
+    {
+      "kind": "windTrack",
+      "x0": 12.4,
+      "x1": 21.6,
+      "target": 21.4,
+      "id": "windTrack",
+      "blocker": "clothClip",
+      "requires": "windControl"
+    }
+  ],
+  "version": "free-v2-refined-20261008",
+  "hints": [
+    "从百叶拉杆左侧或右侧推过去改变风向，让轻猫沿气流上到接球台。",
+    "靠近鱼干按 S 拾取，再送到食用位置；吃鱼可让汤圆多1点重量。",
+    "用增重汤圆或猫与半球配重到4；门闩锁住后，最后一猫能离开压板。"
+  ],
+  "hintTasks": [
+    {
+      "requires": [
+        "airLatch"
+      ],
+      "hints": [
+        "观察风道上的晾衣桥。",
+        "空手奶盖重量1，能借气流升起。",
+        "奶盖放球，进风道上架，按E把晾衣桥锁住。"
+      ]
+    },
+    {
+      "hints": [
+        "接球槽连着出口旁的帆布绞盘。",
+        "可选风力路线：顺风把球送入槽，再让重猫顶住绞盘，固定出口和帆布坡。",
+        "煤球向右调风并推开夹子；汤圆把整球放进风道，送达后到绞盘按E。也可用出口配重板和内侧门撑开路。还可让汤圆守帆台底座、奶盖空手登台，煤球调顺风抬升。"
+      ],
+      "skipIf": "insideLatch",
+      "requires": [
+        "sailAnchor"
+      ]
+    },
+    {
+      "hints": [
+        "观察出口需4的板。",
+        "鱼干按S拾取；吃鱼增重，也可用猫和半球配重。",
+        "汤圆空手按S取鱼，再主动吃鱼后站板；奶盖到内侧按E插门撑，再全部离板回窝。"
+      ],
+      "skipIf": "sailAnchor",
+      "requires": [
+        "insideLatch"
+      ]
+    }
+  ],
+  "room": "阳台",
+  "secret": {
+    "label": "晾衣架散线",
+    "id": "secret04",
+    "x": 9.2,
+    "y": 3
+  },
+  "machines": [
+    {
+      "kind": "windControl",
+      "label": "百叶风向·可切换",
+      "x": 11.6,
+      "ability": "climb",
+      "id": "windControl",
+      "y": 1.35
+    },
+    {
+      "kind": "fish",
+      "id": "fish",
+      "x": 14.4,
+      "label": "鱼干·拾取"
+    },
+    {
+      "kind": "eatFish",
+      "id": "eatFish",
+      "x": 15.2,
+      "label": "吃鱼·汤圆增重"
+    },
+    {
+      "kind": "plate",
+      "label": "出口配重板·需4",
+      "x": 25,
+      "w": 1.7,
+      "id": "exitPlate",
+      "releaseDelay": 0.3,
+      "need": 4
+    },
+    {
+      "kind": "switch",
+      "label": "内侧门闩·锁存",
+      "x": 26.8,
+      "id": "insideLatch",
+      "requires": [
+        "exitPlate"
+      ]
+    },
+    {
+      "kind": "door",
+      "label": "阳台窝门",
+      "requires": [
+        "airLatch",
+        "windControl",
+        "insideLatch"
+      ],
+      "id": "exitDoor",
+      "alternativeLatch": "sailAnchor",
+      "x": 28.1,
+      "w": 0.55,
+      "h": 3.6,
+      "latch": "insideLatch"
+    },
+    {
+      "kind": "rest",
+      "id": "rest",
+      "x": 15.8,
+      "label": "休息篮·恢复基础体重"
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "switch",
+      "y": 1.4,
+      "x": 8.5,
+      "id": "airLatch",
+      "label": "晾衣桥·永久"
+    },
+    {
+      "kind": "cutStation",
+      "id": "cut",
+      "x": 17.7,
+      "label": "可选剪刀台"
+    },
+    {
+      "kind": "prop",
+      "y": 0,
+      "x": 13.5,
+      "id": "clothClip",
+      "label": "推开挡线夹",
+      "pushMin": 2
+    },
+    {
+      "kind": "receiver",
+      "label": "顺风接球槽",
+      "x": 21.3,
+      "w": 0.7,
+      "requiredAmount": 6,
+      "id": "catchSlot",
+      "acceptKind": "full"
+    },
+    {
+      "kind": "prop",
+      "label": "帆布绞盘·顶住放桥",
+      "x": 22.5,
+      "id": "sailAnchor",
+      "requires": [
+        "airLatch",
+        "windControl",
+        "clothClip",
+        "catchSlot"
+      ],
+      "pushMin": 3
+    },
+    {
+      "kind": "exp_sail",
+      "label": "帆台底座·重猫固定",
+      "x": 15.2,
+      "id": "sailLift",
+      "lift": 0,
+      "requires": [
+        "clothClip",
+        "airLatch"
+      ]
+    }
+  ],
+  "finalHints": [
+    "主线通路已经保留，检查猫窝和散线支路。",
+    "所有毛线形态、安装和机器剩料都计入回收。",
+    "把未进窝的猫依次送到出口；可先绕支路取唯一散线，提示不扣星。"
+  ],
+  "sub": "送球松开帆布，顶住绞盘放桥；也能合作配重开门。",
+  "name": "借风搭条路",
+  "spawnX": 1.4,
+  "homeX": 30.4,
+  "day": 4,
+  "roomWidth": 34
+}

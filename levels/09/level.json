@@ -1,0 +1,253 @@
+{
+  "recallStartX": 25.5,
+  "platforms": [
+    {
+      "y": 0.4,
+      "x": 17,
+      "w": 2.5,
+      "id": "laserLow",
+      "h": 0.12
+    },
+    {
+      "y": 0.93,
+      "x": 19.5,
+      "w": 2.8,
+      "id": "laserDeck",
+      "h": 0.12
+    },
+    {
+      "y": 0.93,
+      "x": 22.6,
+      "w": 2.5,
+      "id": "cargoDeck",
+      "h": 0.12
+    },
+    {
+      "y": 1.04,
+      "x": 8.6,
+      "w": 2,
+      "id": "mirrorStand",
+      "h": 0.16
+    },
+    {
+      "y": 0.4,
+      "x": 14.8,
+      "w": 2.5,
+      "id": "mirrorLow",
+      "h": 0.12
+    },
+    {
+      "y": 0.52,
+      "x": 17.2,
+      "w": 2.4,
+      "id": "redCartBridge",
+      "requiresActive": "redCart",
+      "h": 0.12
+    }
+  ],
+  "hints": [
+    "剪开再织一球，装滑轮固定绳；再用一个整球压住猫薄荷。",
+    "煤球调整两面镜子，红点沿低台引奶盖到远端脚踏板；激光可随时关闭。",
+    "红点和重量同时点亮才能手摇送货；上层整球开宽梯，棘轮和宽梯都会保持。"
+  ],
+  "zones": [
+    {
+      "kind": "mint",
+      "id": "mint",
+      "x1": 11.4,
+      "x0": 10.3
+    },
+    {
+      "kind": "conveyor",
+      "x0": 14.8,
+      "x1": 19,
+      "id": "conveyor",
+      "speed": 0.5
+    }
+  ],
+  "version": "free-v2-refined-20261008",
+  "hintTasks": [
+    {
+      "requires": [
+        "pulleyRope"
+      ],
+      "hints": [
+        "观察已经安装的工作绳。",
+        "奶盖原来的6单位毛线已经装在滑轮上，不必再剪织。",
+        "保留两颗整球做运输和配重；调整镜子引奶盖去脚踏板。柜子与推车也会响应红点。"
+      ]
+    },
+    {
+      "requires": [
+        "pulley"
+      ],
+      "hints": [
+        "观察两面镜子的落点。",
+        "镜子可选主脚踏板、推车或秘密柜；手动接管保持生效，重新调镜子才恢复跟随。",
+        "煤球调第一镜到低台，再调第二镜到远板；奶盖追点到板后送整球到滑轮、按E。"
+      ]
+    },
+    {
+      "requires": [
+        "stairs"
+      ],
+      "hints": [
+        "观察上层收货板与棘轮。",
+        "运上去的整球重3，楼梯触发后保持。",
+        "整球到上层板后，楼梯会保持；选奶盖并移动即可接手，也可关闭激光。三猫沿宽梯回窝，调镜子可重新引导。"
+      ]
+    }
+  ],
+  "room": "工作室",
+  "secret": {
+    "label": "传送带散线",
+    "x": 15.5,
+    "id": "secret09",
+    "requires": [
+      "redCabinet"
+    ],
+    "y": 1.2
+  },
+  "machines": [
+    {
+      "kind": "mirror",
+      "label": "镜子·切换红点落点",
+      "x": 9.5,
+      "id": "mirror",
+      "y": 1.2,
+      "targets": [
+        17.7,
+        15.4
+      ]
+    },
+    {
+      "kind": "laserPlate",
+      "y": 1.05,
+      "x": 20,
+      "w": 1.4,
+      "id": "laserPlate",
+      "label": "红点+重量脚踏板",
+      "need": 1
+    },
+    {
+      "kind": "pulley",
+      "label": "手摇滑轮",
+      "x": 13.5,
+      "id": "pulley",
+      "requires": [
+        "pulleyRope"
+      ]
+    },
+    {
+      "kind": "plate",
+      "label": "上层球压板",
+      "ballWell": true,
+      "id": "upperPlate",
+      "y": 1.05,
+      "x": 23.1,
+      "w": 1.6,
+      "need": 3,
+      "releaseDelay": 0.3
+    },
+    {
+      "kind": "bridge",
+      "label": "楼梯·锁存",
+      "x": 25.4,
+      "id": "stairs",
+      "requires": [
+        "upperPlate"
+      ]
+    },
+    {
+      "kind": "door",
+      "label": "工作室窝门",
+      "x": 28.1,
+      "w": 0.55,
+      "latch": "stairs",
+      "id": "exitDoor",
+      "requires": [
+        "pulley",
+        "stairs"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "cutStation",
+      "id": "cut",
+      "x": 4.2,
+      "label": "剪刀台"
+    },
+    {
+      "kind": "weaveStation",
+      "id": "loom",
+      "x": 5.4,
+      "label": "织线机"
+    },
+    {
+      "kind": "ropeBridge",
+      "label": "已装工作绳·原球6单位",
+      "x": 12.1,
+      "w": 1.2,
+      "id": "pulleyRope"
+    },
+    {
+      "kind": "laser",
+      "id": "laser",
+      "x": 8.5,
+      "label": "激光开关·随时关闭"
+    },
+    {
+      "kind": "mirror",
+      "y": 0.52,
+      "x": 16,
+      "id": "mirror2",
+      "label": "第二镜子·主线／支线／安全台",
+      "targets": [
+        20.7,
+        17.7,
+        15.4
+      ]
+    },
+    {
+      "kind": "exp_red_target",
+      "y": 0.52,
+      "x": 15.4,
+      "w": 1.2,
+      "id": "redCabinet",
+      "label": "红点秘密柜"
+    },
+    {
+      "kind": "exp_red_target",
+      "y": 0.52,
+      "x": 17.7,
+      "w": 1.4,
+      "id": "redCart",
+      "label": "红点推车踏板"
+    },
+    {
+      "kind": "exp_recover",
+      "y": 0,
+      "x": 14.4,
+      "id": "localTray",
+      "label": "附近散球归盘",
+      "station": "pulley"
+    }
+  ],
+  "finalHints": [
+    "主线通路已经保留，检查猫窝和散线支路。",
+    "所有毛线形态、安装和机器剩料都计入回收。",
+    "把未进窝的猫依次送到出口；可先绕支路取唯一散线，提示不扣星。"
+  ],
+  "sub": "镜子改落点，滑轮送货，楼梯锁存。",
+  "name": "用红点指挥小猫",
+  "spawnX": 1.4,
+  "homeX": 30.4,
+  "day": 9,
+  "roomWidth": 34
+}

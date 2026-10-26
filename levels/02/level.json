@@ -1,0 +1,211 @@
+{
+  "recallStartX": 24.8,
+  "platforms": [
+    {
+      "y": 0,
+      "x": 13.8,
+      "w": 1.6,
+      "liftHeight": 1.15,
+      "id": "seesawRight",
+      "movingMachine": "balance",
+      "h": 0.12
+    },
+    {
+      "y": 1.85,
+      "x": 15.8,
+      "w": 3.4,
+      "id": "bookShelf",
+      "h": 0.18
+    },
+    {
+      "y": 1.25,
+      "x": 22.7,
+      "w": 2.5,
+      "id": "upperPlate",
+      "h": 0.15
+    },
+    {
+      "ramp": true,
+      "y": 0,
+      "x": 12,
+      "y1": 2.03,
+      "requiresActive": "rampLatch",
+      "id": "foldedRamp",
+      "h": 0.12,
+      "w": 4.1
+    }
+  ],
+  "hints": [
+    "汤圆放下球压左端，空手奶盖站右端随板升起，跳到高书架。",
+    "奶盖钻书挡开锁扣，宽坡永久落下；剪刀台按E剪一球为两半。",
+    "汤圆把半球送A，煤球抱半球跳上低台送B；槽口只能容纳小半球。"
+  ],
+  "version": "free-v2-refined-20261008",
+  "sub": "剪开毛线，让两块轻板同时受压。",
+  "hintTasks": [
+    {
+      "requires": [
+        "rampLatch"
+      ],
+      "hints": [
+        "观察跷跷板右端和书架。",
+        "左侧加重，轻猫搭右端上去，坡道锁存。",
+        "汤圆放球压左侧；奶盖空手站右侧，升起后跳书架、钻书挡按E。"
+      ]
+    },
+    {
+      "requires": [
+        "plateA"
+      ],
+      "hints": [
+        "观察两个小口压板。",
+        "两个半球分别留下，两板门才常开。",
+        "在剪刀台按E剪一球，先送半球到地面A槽，再抱另一半跳低台放B槽。"
+      ]
+    },
+    {
+      "requires": [
+        "plateB"
+      ],
+      "hints": [
+        "检查B板的槽口和书挡。",
+        "小口只收半球；可以抱上低台，也可用书架边的书槽把原半球送到B板。",
+        "煤球抱半球从低台跳上B槽，把球放在槽里，再三猫回窝。"
+      ]
+    }
+  ],
+  "room": "书房",
+  "secret": {
+    "label": "书架散线",
+    "id": "secret02",
+    "x": 18.4,
+    "y": 3.6
+  },
+  "machines": [
+    {
+      "kind": "cutStation",
+      "label": "剪刀台·整球→半球×2",
+      "x": 18.4,
+      "id": "cut",
+      "y": 2.03
+    },
+    {
+      "kind": "seesaw",
+      "label": "跷跷板·左端承重4",
+      "x": 12.4,
+      "w": 3.3,
+      "id": "balance",
+      "latching": false,
+      "need": 2
+    },
+    {
+      "kind": "plate",
+      "label": "轻压板 A",
+      "ballWell": true,
+      "id": "plateA",
+      "x": 20.3,
+      "w": 1.3,
+      "need": 1,
+      "releaseDelay": 0.3,
+      "maxDiameter": 0.3
+    },
+    {
+      "kind": "plate",
+      "label": "轻压板 B",
+      "ballWell": true,
+      "maxDiameter": 0.3,
+      "y": 1.4,
+      "x": 23.2,
+      "w": 1.3,
+      "need": 1,
+      "releaseDelay": 0.3,
+      "id": "plateB"
+    },
+    {
+      "kind": "door",
+      "label": "双板门",
+      "x": 28.1,
+      "w": 0.55,
+      "id": "exitDoor",
+      "requires": [
+        "rampLatch",
+        "plateA",
+        "plateB"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "switch",
+      "y": 2.03,
+      "x": 17.5,
+      "ability": "crawl",
+      "id": "rampLatch",
+      "label": "书架坡道锁扣"
+    },
+    {
+      "kind": "bumper",
+      "y": 1.4,
+      "x": 24.5,
+      "w": 0.25,
+      "id": "bookBumper",
+      "label": "弹性书挡·下方回收槽"
+    },
+    {
+      "kind": "resetTray",
+      "label": "桌面归位·不新增材料",
+      "x": 19,
+      "id": "cutReset",
+      "y": 2.03,
+      "station": "cut"
+    },
+    {
+      "kind": "exp_chute",
+      "label": "书槽送半球",
+      "requires": [
+        "rampLatch"
+      ],
+      "altSourceY": 0,
+      "id": "bookChute",
+      "source": "cut",
+      "y": 0,
+      "x": 19.5,
+      "altSourceX": 20,
+      "preferLast": true,
+      "acceptKind": "half",
+      "target": "plateB"
+    },
+    {
+      "kind": "receiver",
+      "label": "书挡下接球盘",
+      "x": 21.5,
+      "w": 0.8,
+      "id": "bookCatch"
+    }
+  ],
+  "finalHints": [
+    "主线通路已经保留，检查猫窝和散线支路。",
+    "所有毛线形态、安装和机器剩料都计入回收。",
+    "把未进窝的猫依次送到出口；可先绕支路取唯一散线，提示不扣星。"
+  ],
+  "walls": [
+    {
+      "y": 2.67,
+      "x": 16.6,
+      "ability": "crawl",
+      "id": "bookend",
+      "requiresActive": "rampLatch",
+      "h": 2
+    }
+  ],
+  "name": "一个球两份工作",
+  "spawnX": 1.4,
+  "homeX": 30.4,
+  "day": 2,
+  "roomWidth": 34
+}

@@ -1,0 +1,230 @@
+{
+  "recallStartX": 25,
+  "hints": [
+    "靠近鱼干架按 S 拾取；鱼干和线球共用同一个拾取键。",
+    "把鱼干送到老鼠食盘；再把一整球放到鼠洞入口。",
+    "碰分流板左右两侧选择方向，再按 E 启动鼠洞运输；支线可送出隐藏散线。"
+  ],
+  "platforms": [
+    {
+      "y": 1.02,
+      "x": 16,
+      "w": 2.5,
+      "id": "routeShelf",
+      "h": 0.18
+    },
+    {
+      "y": 2.24,
+      "x": 18.6,
+      "w": 1.5,
+      "id": "biscuitShelf",
+      "requiresActive": "cargoLatch",
+      "h": 0.16
+    }
+  ],
+  "version": "free-v2-refined-20261008",
+  "sub": "鱼干换运输，球要沿鼠洞走到压板。",
+  "hintTasks": [
+    {
+      "requires": [
+        "feederBlock"
+      ],
+      "hints": [
+        "观察起点鱼干架前的挡物。",
+        "先推开挡物，空手靠近鱼干架；拾取键与线球相同。",
+        "汤圆放球、推开挡物，靠近鱼干按S拾取，再到食盘按E送鱼。"
+      ]
+    },
+    {
+      "requires": [
+        "cargoLatch"
+      ],
+      "hints": [
+        "观察高处分流板和货盘后窄缝。",
+        "从分流板左右两侧走过去选路线，运输前先开货盘侧门。",
+        "煤球放球上架，从右侧推向主线档；奶盖空手钻货盘缝，按E开侧门。"
+      ]
+    },
+    {
+      "requires": [
+        "deliveryPlate"
+      ],
+      "hints": [
+        "观察鼠洞窗口和终点收货板。",
+        "一份鱼干可持续运输；主线可以在洞口排队发车，支线可以用食盘或柜顶饼干。",
+        "先送整球到主线压板，再按鼠洞旁的支线食盘切换路线，直接请老鼠取散线；不必重新取鱼或爬高架。"
+      ]
+    }
+  ],
+  "room": "厨房",
+  "secret": {
+    "label": "鼠洞散线",
+    "x": 24.6,
+    "id": "secret06",
+    "requires": [
+      "secretDelivery"
+    ],
+    "y": 0.8
+  },
+  "machines": [
+    {
+      "kind": "fish",
+      "id": "fish",
+      "x": 5,
+      "label": "鱼干架"
+    },
+    {
+      "kind": "dish",
+      "id": "dish",
+      "x": 7,
+      "label": "鱼干食盘"
+    },
+    {
+      "kind": "rat",
+      "label": "鼠洞物流",
+      "x": 14.4,
+      "id": "rat",
+      "requires": [
+        "cargoLatch",
+        "routeSwitch"
+      ]
+    },
+    {
+      "kind": "switch",
+      "label": "分流板·主线/支线",
+      "x": 17.1,
+      "ability": "climb",
+      "id": "routeSwitch",
+      "y": 1.2,
+      "mode": 2
+    },
+    {
+      "kind": "plate",
+      "label": "货运压板",
+      "x": 23.3,
+      "w": 1.6,
+      "ballWell": true,
+      "id": "deliveryPlate",
+      "releaseDelay": 0.3,
+      "need": 3
+    },
+    {
+      "kind": "door",
+      "label": "厨房窝门",
+      "x": 28.1,
+      "w": 0.55,
+      "id": "exitDoor",
+      "requires": [
+        "cargoLatch",
+        "routeSwitch",
+        "deliveryPlate"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "switch",
+      "label": "奶盖·货盘侧门",
+      "x": 19.9,
+      "ability": "crawl",
+      "id": "cargoLatch"
+    },
+    {
+      "kind": "prop",
+      "label": "推开喂食器挡物",
+      "x": 4.2,
+      "id": "feederBlock",
+      "pushMin": 3
+    },
+    {
+      "kind": "rest",
+      "id": "rest",
+      "x": 8.7,
+      "label": "休息篮·恢复体重"
+    },
+    {
+      "kind": "eatFish",
+      "id": "eatFish",
+      "x": 8,
+      "label": "鱼干用途·主动选择"
+    },
+    {
+      "kind": "routeReset",
+      "id": "routeReset",
+      "x": 15.2,
+      "label": "货运复位·同一货物"
+    },
+    {
+      "kind": "receiver",
+      "label": "支线散线收货槽",
+      "x": 24.6,
+      "w": 0.6,
+      "id": "secretDelivery"
+    },
+    {
+      "kind": "fish",
+      "label": "鼠洞边鱼干罐",
+      "x": 11.5,
+      "id": "fishPantry",
+      "requires": [
+        "deliveryPlate"
+      ]
+    },
+    {
+      "kind": "dish",
+      "label": "支线食盘",
+      "x": 12.5,
+      "deliveryMode": 2,
+      "id": "returnDish",
+      "requires": [
+        "deliveryPlate"
+      ],
+      "repeatRoute": true
+    },
+    {
+      "kind": "exp_queue",
+      "label": "货物排队发车",
+      "x": 15.2,
+      "id": "mouseQueue",
+      "requires": [
+        "cargoLatch",
+        "routeSwitch"
+      ]
+    },
+    {
+      "kind": "exp_biscuit",
+      "y": 2.4,
+      "x": 19.2,
+      "id": "highBiscuit",
+      "label": "柜顶饼干换散线",
+      "requires": [
+        "deliveryPlate"
+      ]
+    }
+  ],
+  "finalHints": [
+    "主线通路已经保留，检查猫窝和散线支路。",
+    "所有毛线形态、安装和机器剩料都计入回收。",
+    "把未进窝的猫依次送到出口；可先绕支路取唯一散线，提示不扣星。"
+  ],
+  "walls": [
+    {
+      "y": 0.66,
+      "x": 18.8,
+      "ability": "crawl",
+      "id": "cargoGap",
+      "requiresActive": "cargoLatch",
+      "h": 3
+    }
+  ],
+  "name": "请老鼠帮个忙",
+  "spawnX": 1.4,
+  "homeX": 30.4,
+  "day": 6,
+  "roomWidth": 34
+}

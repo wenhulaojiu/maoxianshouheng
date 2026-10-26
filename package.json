@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "start": "node server.cjs",
+    "test": "node verify.cjs"
+  },
+  "dependencies": {
+    "wasmoon": "1.16.0"
+  }
+}

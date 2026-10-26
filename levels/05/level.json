@@ -1,0 +1,249 @@
+{
+  "recallStartX": 23.6,
+  "platforms": [
+    {
+      "y": 1.52,
+      "x": 10.1,
+      "w": 2.4,
+      "id": "nearHookShelf",
+      "h": 0.18
+    },
+    {
+      "y": -0.14,
+      "x": 12.5,
+      "w": 7.6,
+      "id": "ropeDeck",
+      "requiresActive": "ropeBridge",
+      "h": 0.14
+    },
+    {
+      "y": -0.14,
+      "x": 12.5,
+      "w": 7.6,
+      "id": "wideBridgeDeck",
+      "requiresActive": "wideBridge",
+      "h": 0.14
+    },
+    {
+      "ramp": true,
+      "y": -0.45,
+      "x": 19.2,
+      "y1": 0,
+      "ability": "crawl",
+      "id": "underExit",
+      "h": 0.08,
+      "w": 1.7
+    },
+    {
+      "y": 0,
+      "x": 9.4,
+      "w": 1.2,
+      "id": "drawerStep",
+      "requiresActive": "drawer",
+      "h": 0.45
+    }
+  ],
+  "hints": [
+    "观察床底窄路和两端挂钩；先把一整球剪开再织成绳。",
+    "煤球空手到近端挂钩，奶盖走床底窄路到对岸，把送来的绳端固定。",
+    "煤球空手走承重2的绳桥开锁扣；奶盖推定位支架落宽桥，汤圆和球再过。"
+  ],
+  "gap": {
+    "tunnelY": -0.45,
+    "x0": 12.5,
+    "x1": 20.1,
+    "depth": -1.2
+  },
+  "version": "free-v2-refined-20261008",
+  "hintTasks": [
+    {
+      "hints": [
+        "观察织线机和近端高挂钩。",
+        "同一根绳有两种挂法：空手上高挂钩，或先推开抽屉使用低位挂绳口。",
+        "剪织一次得到绳；煤球可上高挂钩。也可让汤圆拉开抽屉，把绳放在低位口旁按E，再让奶盖接远端。"
+      ],
+      "skipIf": "wideBridge",
+      "requires": [
+        "ropeNear"
+      ]
+    },
+    {
+      "hints": [
+        "观察床底窄路和送来的绳端。",
+        "奶盖空手走床底，远端挂上才形成桥。",
+        "等绳端送到另一岸，让空手奶盖在远端挂钩旁按E。"
+      ],
+      "skipIf": "wideBridge",
+      "requires": [
+        "ropeFar"
+      ]
+    },
+    {
+      "requires": [
+        "wideBridge"
+      ],
+      "hints": [
+        "观察轻桥承重2和对岸支架。",
+        "煤球空手过桥开锁，奶盖放宽桥，重猫后过。",
+        "煤球开远端锁扣，奶盖放宽桥；大家沿宽路回窝。想收回绳子，可用对岸收绳口，不必返回床边。"
+      ]
+    }
+  ],
+  "room": "卧室",
+  "secret": {
+    "label": "床下散线",
+    "x": 11.8,
+    "id": "secret05",
+    "requires": [
+      "drawer"
+    ],
+    "y": 3.3
+  },
+  "machines": [
+    {
+      "kind": "cutStation",
+      "id": "cut",
+      "x": 5.4,
+      "label": "剪刀台"
+    },
+    {
+      "kind": "weaveStation",
+      "id": "loom",
+      "x": 7.4,
+      "label": "织线机·两半织绳"
+    },
+    {
+      "kind": "ropeBridge",
+      "label": "固定绳桥·承重≤2",
+      "x": 12.5,
+      "w": 7.6,
+      "id": "ropeBridge",
+      "manualEnds": true
+    },
+    {
+      "kind": "switch",
+      "label": "煤球·展开宽桥",
+      "x": 21.3,
+      "ability": "light",
+      "id": "farSwitch",
+      "requires": [
+        "ropeBridge"
+      ]
+    },
+    {
+      "kind": "bridge",
+      "label": "折叠木桥",
+      "x": 22.6,
+      "ability": "crawl",
+      "id": "wideBridge",
+      "requires": [
+        "farSwitch"
+      ]
+    },
+    {
+      "kind": "door",
+      "label": "卧室窝门",
+      "x": 28.1,
+      "w": 0.55,
+      "id": "exitDoor",
+      "requires": [
+        "farSwitch",
+        "wideBridge"
+      ],
+      "h": 3.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "unhook",
+      "id": "unhook",
+      "x": 11.5,
+      "label": "解挂绳·保留材料"
+    },
+    {
+      "kind": "tool",
+      "label": "免费网兜",
+      "x": 4.1,
+      "tool": "网兜",
+      "id": "toolNet"
+    },
+    {
+      "kind": "ropeNear",
+      "y": 1.7,
+      "x": 11.6,
+      "ability": "climb",
+      "id": "ropeNear",
+      "label": "近端挂钩·送线槽"
+    },
+    {
+      "kind": "ropeFar",
+      "y": 0,
+      "x": 20.5,
+      "ability": "crawl",
+      "id": "ropeFar",
+      "label": "远端挂钩·拉出绳端"
+    },
+    {
+      "kind": "prop",
+      "y": 0,
+      "x": 11,
+      "id": "drawer",
+      "label": "推开床底抽屉",
+      "pushMin": 3
+    },
+    {
+      "kind": "receiver",
+      "label": "断绳回收盘 · 可重织",
+      "x": 11.2,
+      "w": 1.2,
+      "id": "ropeRepairTray"
+    },
+    {
+      "kind": "unhook",
+      "label": "对岸收绳口",
+      "x": 23.1,
+      "id": "unhookFar",
+      "requires": [
+        "wideBridge"
+      ]
+    },
+    {
+      "kind": "exp_cord",
+      "label": "抽屉低位挂绳口",
+      "x": 11.3,
+      "id": "drawerCord",
+      "requires": [
+        "drawer"
+      ]
+    },
+    {
+      "kind": "weaveStation",
+      "id": "repairLoom",
+      "x": 11.3,
+      "label": "床边补绳机·原材料重织"
+    },
+    {
+      "kind": "exp_recover",
+      "y": 0,
+      "x": 8.3,
+      "id": "localTray",
+      "label": "附近散球归盘",
+      "station": "loom"
+    }
+  ],
+  "finalHints": [
+    "主线通路已经保留，检查猫窝和散线支路。",
+    "所有毛线形态、安装和机器剩料都计入回收。",
+    "把未进窝的猫依次送到出口；可先绕支路取唯一散线，提示不扣星。"
+  ],
+  "sub": "轻猫先过固定绳桥，宽桥再接所有人。",
+  "name": "把毛线变成路",
+  "spawnX": 1.4,
+  "homeX": 30.4,
+  "day": 5,
+  "roomWidth": 34
+}

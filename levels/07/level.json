@@ -1,0 +1,220 @@
+{
+  "sub": "外圈送猫，内筒处理线团。",
+  "secret": {
+    "label": "滚筒顶端散线",
+    "id": "secret07",
+    "x": 10.6,
+    "y": 4
+  },
+  "version": "free-v2-refined-20261008",
+  "finalHints": [
+    "主线通路已经保留，检查猫窝和散线支路。",
+    "所有毛线形态、安装和机器剩料都计入回收。",
+    "把未进窝的猫依次送到出口；可先绕支路取唯一散线，提示不扣星。"
+  ],
+  "walls": [
+    {
+      "y": 0.66,
+      "x": 11.3,
+      "ability": "crawl",
+      "id": "repairGap",
+      "requiresActive": "unload",
+      "h": 0.4
+    }
+  ],
+  "name": "跟着滚筒转一圈",
+  "spawnX": 1.4,
+  "day": 7,
+  "roomWidth": 34,
+  "hintTasks": [
+    {
+      "requires": [
+        "catTree"
+      ],
+      "hints": [
+        "观察控制台和外圈托架。",
+        "外圈送猫，内筒变毡，是两套用途。",
+        "煤球空手跳控制架，按E启用外圈；上、下层拉绳都能暂停。"
+      ]
+    },
+    {
+      "requires": [
+        "unload"
+      ],
+      "hints": [
+        "观察出料上层和下层标志。",
+        "错档只回地面低槽，不删除线球。",
+        "奶盖钻维修缝，按出料挡板选好上层；汤圆装入整球就会自动洗线。外圈托架可单独暂停。"
+      ]
+    },
+    {
+      "requires": [
+        "wideStairs"
+      ],
+      "hints": [
+        "观察上层重板与折叠梯。",
+        "毡球重4压板后，宽梯可以锁存。",
+        "毡球到上层重板后，可在地面出料口拉绳放回程坡；也可让上层队友放坡。柜顶散线与中途停靠是可选挑战。"
+      ]
+    }
+  ],
+  "hints": [
+    "煤球到控制台按 E 启动外圈托架；站上托架会被送到上层。",
+    "把一颗整球放入内筒，启动短循环让它毡化；奶盖调整出料方向。",
+    "用毡球压住4点重板，再展开宽梯，地面和上层都能下车。"
+  ],
+  "recallStartX": 29.8,
+  "room": "洗衣房",
+  "platforms": [
+    {
+      "y": 1.04,
+      "x": 9.6,
+      "w": 2,
+      "id": "controlShelf",
+      "h": 0.16
+    },
+    {
+      "y": 0,
+      "x": 7.4,
+      "w": 2.8,
+      "id": "carrierDeck",
+      "movingMachine": "washer",
+      "h": 0.12
+    },
+    {
+      "y": 2.32,
+      "x": 9.2,
+      "w": 24.5,
+      "id": "upperLanding",
+      "h": 0.18
+    },
+    {
+      "ramp": true,
+      "y": 0,
+      "x": 25.4,
+      "y1": 2.5,
+      "requiresActive": "wideStairs",
+      "id": "wideStairsDeck",
+      "h": 0.12,
+      "w": 4.2
+    }
+  ],
+  "machines": [
+    {
+      "kind": "washer",
+      "label": "洗衣机·启动/暂停",
+      "x": 6.2,
+      "id": "washer",
+      "cycleSeconds": 6,
+      "carrier": true
+    },
+    {
+      "kind": "switch",
+      "label": "煤球·启用外圈托架",
+      "x": 10.8,
+      "ability": "climb",
+      "id": "catTree",
+      "y": 1.2
+    },
+    {
+      "kind": "switch",
+      "label": "奶盖·出料挡板",
+      "x": 11.6,
+      "ability": "crawl",
+      "id": "unload",
+      "y": 0
+    },
+    {
+      "kind": "plate",
+      "label": "毡球重板",
+      "ballWell": true,
+      "id": "heavyPlate",
+      "y": 2.5,
+      "x": 23.2,
+      "w": 1.6,
+      "need": 4,
+      "releaseDelay": 0.3
+    },
+    {
+      "kind": "bridge",
+      "label": "折叠宽梯",
+      "x": 25.6,
+      "id": "wideStairs",
+      "y": 2.5,
+      "requires": [
+        "heavyPlate"
+      ]
+    },
+    {
+      "kind": "door",
+      "label": "洗衣房窝门",
+      "x": 28.1,
+      "w": 0.55,
+      "y": 2.5,
+      "id": "exitDoor",
+      "requires": [
+        "washer",
+        "catTree",
+        "unload",
+        "heavyPlate",
+        "wideStairs"
+      ],
+      "h": 1.6
+    },
+    {
+      "kind": "backup",
+      "id": "backup",
+      "x": 3.2,
+      "label": "备用线"
+    },
+    {
+      "kind": "tool",
+      "label": "免费护垫",
+      "x": 4.1,
+      "tool": "护垫",
+      "id": "toolPad"
+    },
+    {
+      "kind": "washerControl",
+      "y": 2.5,
+      "x": 10.5,
+      "id": "washerTopPause",
+      "label": "上层暂停拉绳"
+    },
+    {
+      "kind": "washerControl",
+      "id": "washerLowPause",
+      "x": 7.2,
+      "label": "地面暂停拉绳"
+    },
+    {
+      "kind": "exp_laundry",
+      "label": "出料完成·放回程坡",
+      "x": 12.5,
+      "id": "laundryRelay",
+      "requires": [
+        "catTree",
+        "unload",
+        "heavyPlate"
+      ]
+    },
+    {
+      "kind": "washerControl",
+      "y": 1.2,
+      "x": 9.2,
+      "id": "washerMidPause",
+      "label": "中途停靠拉绳"
+    }
+  ],
+  "homeX": 30.4,
+  "homeY": 2.5,
+  "zones": [
+    {
+      "kind": "slip",
+      "x0": 13,
+      "x1": 15,
+      "id": "soap",
+      "catchX": 15.2
+    }
+  ]
+}
